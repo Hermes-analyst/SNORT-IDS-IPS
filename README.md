@@ -42,11 +42,11 @@ Run Commands:
 ```bash
 
 # IDS (alert mode)
-sudo snort -A console -q -c /etc/snort/snort.conf -i {{iface}}
+sudo snort -A console -q -c /etc/snort/snort.conf -i enp0s3
 
 # IPS (inline NFQUEUE mode)
 sudo iptables -I FORWARD -j NFQUEUE --queue-num 0
-sudo snort -Q --daq nfq --daq-var queue=0 -c /etc/snort/snort.conf -i {{iface}}
+sudo snort -Q --daq nfq --daq-var queue=0 -c /etc/snort/snort.conf -i enp0s3
 
 ```
 ## 🧾 Custom Rules (/etc/snort/rules/local.rules)
@@ -65,7 +65,7 @@ alert tcp any any -> $HOME_NET 1:1024 (flags:S; msg:"SYN scan to HOME_NET"; sid:
 
 1. Start Snort on Ubuntu:
 ```bash
-sudo snort -A console -q -c /etc/snort/snort.conf -i {{iface}}
+sudo snort -A console -q -c /etc/snort/snort.conf -i enp0s3
 ```
 2. From Kali:
 ```bash
